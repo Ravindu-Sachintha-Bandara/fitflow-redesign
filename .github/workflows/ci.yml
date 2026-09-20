@@ -1,0 +1,17 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  docs-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify required docs exist
+        run: |
+          test -f README.md
+          test -f docs/tech-stack.md
+          test -f docs/comparison-matrix.md
+          test -f docs/architecture/architecture.png
